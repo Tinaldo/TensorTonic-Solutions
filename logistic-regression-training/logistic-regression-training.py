@@ -23,7 +23,7 @@ def train_logistic_regression(X, y, lr=0.1, steps=1000):
         p = _sigmoid(z)
         bce = -np.mean(y*np.log(p) + (1-y)*np.log(1-p))
 
-        grad_w = np.mean(X.T @ (p - y))
+        grad_w = (X.T @ (p - y)) / n_samples
         grad_b = np.mean(p - y)
 
         w -= lr*grad_w
