@@ -9,7 +9,7 @@ def euclidean_distance(x, y):
     x = np.asarray(x)
     y = np.asarray(y)
 
-    if (len(x) != len(y)):
-        raise ValueError("Array not of the same size")
+    if (x.shape != y.shape):
+        raise ValueError("Vectors must have the same shape")
     
     return np.sqrt(np.sum((x-y)**2))
