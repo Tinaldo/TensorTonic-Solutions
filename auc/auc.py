@@ -8,14 +8,14 @@ def auc(fpr, tpr):
     fpr = np.asarray(fpr, dtype=float)
     tpr = np.asarray(tpr, dtype=float)
 
-    fpr_size = fpr.size
-    tpr_size = tpr.size
-
-    if fpr_size != tpr_size:
+    if fpr.shape != tpr.shape:
         raise ValueError("Arrays are not of the same length")
-
-    if fpr_size < 2 or tpr_size < 2:
+    if fpr.size < 2:
         raise ValueError("Arrays must be of length at least 2")
+
+    order = np.argsort(fpr)
+    fpr = fpr[order]
+    tpr = tpr[order]
 
     auc = np.trapezoid(tpr, fpr)
 
