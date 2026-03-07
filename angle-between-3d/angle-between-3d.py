@@ -13,6 +13,7 @@ def angle_between_3d(v, w):
         return np.nan
                             
     cos = (v @ w)/(norm_v * norm_w)
+    cos = np.clip(cos, -1.0, 1.0)
     theta = np.arccos(cos)
 
-    return theta
+    return float(theta)
