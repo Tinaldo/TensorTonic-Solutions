@@ -5,7 +5,7 @@ def nadam_step(w, m, v, grad, lr=0.002, beta1=0.9, beta2=0.999, eps=1e-8):
     Perform one Nadam update step.
     """
     # Write code here
-    if not 0.0 <= beta1 <= 1.0 and not 0.0 <= beta2 <= 1.0:
+    if not (0.0 < beta1 < 1.0) or not (0.0 < beta2 < 1.0):
         raise ValueError("must be 0 < beta1, beta2 < 1")
 
     if lr <= 0 or eps <= 0:
